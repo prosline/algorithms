@@ -1,5 +1,6 @@
 package main
 
+import "strings"
 
 /*
 func main() {
@@ -11,6 +12,7 @@ func main() {
 }
 */
 
+// Sorting Slice of Numbers
 func BubbleSortInt(numbers []int, order int) []int {
 	var N int = len(numbers)
 	for i := 0; i < N; i++ {
@@ -41,6 +43,47 @@ func sweepInt(numbers []int, iterations int, order int) bool {
 			if firstNumber < secondNumber {
 				numbers[firstIndex] = secondNumber
 				numbers[secondIndex] = firstNumber
+				swapped = true
+			}
+
+		}
+		firstIndex++
+		secondIndex++
+	}
+	return swapped
+}
+
+// Sorting Slice of Strings
+func BubbleSortString(names []string, order int) []string {
+	var N int = len(names)
+	for i := 0; i < N; i++ {
+		if !sweepString(names, i, order) {
+			return names
+		}
+	}
+	return names
+}
+
+func sweepString(names []string, iterations int, order int) bool {
+	var N = len(names)
+	firstIndex := 0
+	secondIndex := 1
+	swapped := false
+	for secondIndex < (N - iterations) {
+		var firstNumber string = names[firstIndex]
+		var secondNumber string = names[secondIndex]
+		// swapping
+		if order > 0 {
+			if strings.ToLower(firstNumber) > strings.ToLower(secondNumber) {
+				names[firstIndex] = secondNumber
+				names[secondIndex] = firstNumber
+				swapped = true
+			}
+
+		} else {
+			if strings.ToLower(firstNumber) < strings.ToLower(secondNumber) {
+				names[firstIndex] = secondNumber
+				names[secondIndex] = firstNumber
 				swapped = true
 			}
 
