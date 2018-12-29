@@ -1,10 +1,7 @@
 package main
 
-import "fmt"
 
-const ASC = 1
-const DESC = -1
-
+/*
 func main() {
 	var numbers []int = []int{0, 6, 5, 3, 2, 1, 4}
 	bubbleSortInt(numbers, ASC)
@@ -12,18 +9,19 @@ func main() {
 	bubbleSortInt(numbers, DESC)
 	fmt.Println("List to be sorted in Descending Order", numbers)
 }
+*/
 
-func bubbleSortInt(numbers []int, order int) {
+func BubbleSortInt(numbers []int, order int) []int {
 	var N int = len(numbers)
 	for i := 0; i < N; i++ {
-		if !sweep(numbers, i, order) {
-			return
+		if !sweepInt(numbers, i, order) {
+			return numbers
 		}
-		fmt.Println(numbers)
 	}
+	return numbers
 }
 
-func sweep(numbers []int, iterations int, order int) bool {
+func sweepInt(numbers []int, iterations int, order int) bool {
 	var N = len(numbers)
 	firstIndex := 0
 	secondIndex := 1
