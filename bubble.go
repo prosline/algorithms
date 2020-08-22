@@ -1,16 +1,21 @@
 package main
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
-/*
+const ASC int = 1
+const DESC int = -1
+
 func main() {
 	var numbers []int = []int{0, 6, 5, 3, 2, 1, 4}
-	bubbleSortInt(numbers, ASC)
+	BubbleSortInt(numbers, ASC)
 	fmt.Println("List to be sorted in Ascending Order", numbers)
-	bubbleSortInt(numbers, DESC)
+	BubbleSortInt(numbers, DESC)
 	fmt.Println("List to be sorted in Descending Order", numbers)
 }
-*/
+
 
 // Sorting Slice of Numbers
 func BubbleSortInt(numbers []int, order int) []int {
@@ -49,6 +54,7 @@ func sweepInt(numbers []int, iterations int, order int) bool {
 		}
 		firstIndex++
 		secondIndex++
+		fmt.Print("ONE PASS COMPLETED.....\n")
 	}
 	return swapped
 }
