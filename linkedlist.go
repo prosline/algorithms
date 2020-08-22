@@ -36,8 +36,16 @@ func (l *List) Delete(value int){
 	if l.length == 0{
 		return
 	}
+	if l.head.key == value {
+		l.head = l.head.next
+		l.length--
+		return
+	}
 	valueDelete := l.head
 	for valueDelete.next.key != value {
+		if valueDelete.next.next == nil {
+			return
+		}
 		valueDelete = valueDelete.next
 	}
 	valueDelete.next = valueDelete.next.next
@@ -93,6 +101,12 @@ func main() {
 	l.Reverse()
 	fmt.Println("\n================================\n")
 	l.Delete(10)
-	fmt.Println("\n================================\n")
+	fmt.Println("\n======= Deleting 10 =============\n")
+	l.Display()
+	l.Delete(5)
+	fmt.Println("\n======= Deleting Head ===========\n")
+	l.Display()
+	l.Delete(100)
+	fmt.Println("\n======= Deleting value that doen't exist ===========\n")
 	l.Display()
 }
